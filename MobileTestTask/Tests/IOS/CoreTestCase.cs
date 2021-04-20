@@ -17,7 +17,7 @@ namespace MobileTestTask.Tests.IOS
    public class CoreTestCase
     {
         protected AppiumDriver<IWebElement> Driver;
-        private static string SeleniumHubURL = $"http://172.16.7.152:4723/wd/hub";
+        private static string SeleniumHubURL = $"http://172.16.6.137:4723/wd/hub";
         protected IWait Wait;
 
         [SetUp]
