@@ -71,6 +71,7 @@
     <Compile Include="PageObjects\AndroidPageObjects\BasePage.cs" />
     <Compile Include="PageObjects\IOSPageObjects\BasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Android\CoreTestCase.cs" />
     <Compile Include="Tests\Android\Tests.cs" />
     <Compile Include="Tests\IOS\CoreTestCase.cs" />
     <Compile Include="Tests\IOS\Tests.cs" />
