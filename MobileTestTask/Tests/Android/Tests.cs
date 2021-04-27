@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MobileTestTask.Tests.Android
 {
-    class Tests
+    public class Tests
     {
     }
 }

@@ -22,7 +22,7 @@ namespace MobileTestTask.Utils
 
         private static TimeSpan DefaultSleepInterval
         {
-            get { return TimeSpan.FromMilliseconds(500); }
+            get { return TimeSpan.FromMilliseconds(5000); }
         }
 
         public Wait()

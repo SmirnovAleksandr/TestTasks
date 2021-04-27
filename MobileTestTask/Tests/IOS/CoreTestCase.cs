@@ -14,28 +14,32 @@ using System.Threading.Tasks;
 
 namespace MobileTestTask.Tests.IOS
 {
-   public class CoreTestCase
+    [SetUpFixture]
+    public class CoreTestCase
     {
         protected AppiumDriver<IWebElement> Driver;
-        private static string SeleniumHubURL = $"http://172.16.6.137:4723/wd/hub";
+        private static string SeleniumHubURL = $"http://172.16.6.197:4723/wd/hub";
         protected IWait Wait;
 
-        [SetUp]
+    
+        [OneTimeSetUp]
         public void SetUp()
         {
             var hubUri = new Uri(SeleniumHubURL);
             var capabilities = new AppiumOptions();
-            capabilities.AddAdditionalCapability(CapabilityType.PlatformName, "IOS");
-            capabilities.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "12.1.3");
-            capabilities.AddAdditionalCapability(MobileCapabilityType.Udid, "fa0880a9e1db48e79429023bff433e08c56ca686");
-            capabilities.AddAdditionalCapability(MobileCapabilityType.DeviceName, "iPhone6");
+            capabilities.AddAdditionalCapability(MobileCapabilityType.DeviceName, "iPhone8");
+            capabilities.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "14.4.2");
+            capabilities.AddAdditionalCapability(CapabilityType.PlatformName, "IOS");           
+            capabilities.AddAdditionalCapability(MobileCapabilityType.Udid, "a459266f870f38bd0c183a49ba5fbcb3ecd90079");
+            capabilities.AddAdditionalCapability("bundleId", "ru.russianpost.Russian-Post");
             capabilities.AddAdditionalCapability(MobileCapabilityType.AutomationName, "XCUITest");
-            capabilities.AddAdditionalCapability("useNewWDA", "true");
-            capabilities.AddAdditionalCapability("xcodeOrgId", "3V72XTL4S5");
+            capabilities.AddAdditionalCapability(MobileCapabilityType.NoReset, "true");
+            capabilities.AddAdditionalCapability("useNewWDA", "false");
+            //capabilities.AddAdditionalCapability("xcodeOrgId", "3V72XTL4S5");
             capabilities.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, 2400);
 
             //capabilities.AddAdditionalCapability("bundleId", "by.mts.money");
-            capabilities.AddAdditionalCapability("bundleId", "ru.russianpost.Russian-Post");
+
 
             Driver = new IOSDriver<IWebElement>(new Uri(SeleniumHubURL), capabilities);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
@@ -46,5 +50,9 @@ namespace MobileTestTask.Tests.IOS
                                         typeof(NoSuchElementException)
                                         );
         }
+
+
+
+
     }
 }

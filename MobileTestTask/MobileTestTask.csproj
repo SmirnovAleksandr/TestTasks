@@ -69,7 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\AndroidPageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\Keyboard.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\User.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\CorePageObject.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\LoginPageObject.cs" />
     <Compile Include="PageObjects\IOSPageObjects\MainPageObject.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\MorePageObject.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\MyProfilePageObject.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\ProductsPageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Android\Tests.cs" />
     <Compile Include="Tests\IOS\CoreTestCase.cs" />
