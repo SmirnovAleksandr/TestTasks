@@ -34,7 +34,8 @@ namespace MobileTestTask.Tests.IOS
             capabilities.AddAdditionalCapability("xcodeOrgId", "3V72XTL4S5");
             capabilities.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, 2400);
 
-            capabilities.AddAdditionalCapability("bundleId", "by.mts.money");
+            //capabilities.AddAdditionalCapability("bundleId", "by.mts.money");
+            capabilities.AddAdditionalCapability("bundleId", "ru.russianpost.Russian-Post");
 
             Driver = new IOSDriver<IWebElement>(new Uri(SeleniumHubURL), capabilities);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
