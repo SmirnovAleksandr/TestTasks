@@ -69,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\AndroidPageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\CameraPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\NewPublicationPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\LoginActivityPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\MainActivityPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\MainTabActivityPage.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\BasePage.cs" />
     <Compile Include="PageObjects\IOSPageObjects\Keyboard.cs" />
     <Compile Include="PageObjects\IOSPageObjects\User.cs" />
     <Compile Include="PageObjects\IOSPageObjects\CorePageObject.cs" />
@@ -78,6 +84,7 @@
     <Compile Include="PageObjects\IOSPageObjects\MyProfilePageObject.cs" />
     <Compile Include="PageObjects\IOSPageObjects\ProductsPageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Android\CoreTestCase.cs" />
     <Compile Include="Tests\Android\Tests.cs" />
     <Compile Include="Tests\IOS\CoreTestCase.cs" />
     <Compile Include="Tests\IOS\Tests.cs" />

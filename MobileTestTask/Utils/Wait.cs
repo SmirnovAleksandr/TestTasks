@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtension.Support.Utils;
 using System;
 using System.Collections.Generic;
@@ -128,5 +129,53 @@ namespace MobileTestTask.Utils
         }
 
         #endregion
+
+        /// <summary>
+        /// Waitin for displaing element 
+        /// </summary>
+        /// <param name="el">Element expected to be dispayed</param>
+        /// <param name="doThrowTimeOutException">Throw timeout exception if element doesnt displayed</param>
+        /// <returns></returns>
+        public bool WaitElement(IWebElement el, bool doThrowTimeOutException = true)
+        {
+            //Timeout           // общее время ожидание
+            //PollingInterval   // перерыв между попытками
+            var _clock = new SystemClock();
+            var endTime = _clock.LaterBy(Timeout);
+
+            while (_clock.IsNowBefore(endTime))
+            {
+                try
+                {
+                    System.Diagnostics.Debug.WriteLine("Waiting for " + el.Text);
+                    if (el.Displayed) return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    System.Diagnostics.Debug.WriteLine("Element still Not found");
+                }
+                catch (System.Reflection.TargetInvocationException tie)
+                {
+                    System.Diagnostics.Debug.WriteLine("----------------------------------");
+                    System.Diagnostics.Debug.WriteLine(tie.Message);
+                    System.Diagnostics.Debug.WriteLine("----------------------------------");
+                }
+
+                Thread.Sleep(PollingInterval);
+            }
+
+            //           MakeScreenshot("Element not found");
+
+            if (doThrowTimeOutException)
+                throw new TimeoutException("Element " + el + "not found during " + "timeout");
+            else
+            {
+                return false;
+            }
+        }
+
+
+        
+
     }
 }
