@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Config.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\BasePage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\CameraPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\CropPage.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="PageObjects\AndroidPageObjects\MainActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\MainTabActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\SelectImagePage.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\Browser.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\DepartmentPageObject.cs" />
     <Compile Include="PageObjects\IOSPageObjects\Keyboard.cs" />
     <Compile Include="PageObjects\IOSPageObjects\User.cs" />
     <Compile Include="PageObjects\IOSPageObjects\CorePageObject.cs" />
@@ -96,6 +99,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="ScriptFolder\adbScript.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

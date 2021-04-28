@@ -20,6 +20,10 @@ namespace MobileTestTask.PageObjects.IOSPageObjects
         [FindsBy(How = How.XPath, Using = menuItem)]
         public IWebElement MenuItem;
 
+               
+        [FindsBy(How = How.XPath, Using = "//XCUIElementTypeCell[@name='moreStaticCell_advertising']/XCUIElementTypeImage")]
+        public IWebElement Advertising;
+
         public IWebElement GetMenuElement(string substring)
         {
 

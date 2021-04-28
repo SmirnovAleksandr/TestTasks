@@ -68,7 +68,7 @@ namespace MobileTestTask.PageObjects.IOSPageObjects
 
         }
 
-        public IWebElement WaitForElementAndClick(IWebElement webElement, int timeoutnSeconds)
+        public IWebElement WaitForElementAndClick(IWebElement webElement, int timeoutnSeconds , string assert = "Не удалось кликнуть по элементу")
         {
             var element = WaitForElementPresent(webElement, timeoutnSeconds);
             element.Click();

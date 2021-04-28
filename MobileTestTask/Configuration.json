@@ -1,0 +1,41 @@
+﻿{
+  "ios": {
+    "capabilities": {
+      "hub": "http://172.16.6.188:4723/wd/hub",
+      "deviceName": "iPhone8",
+      "platformName": "IOS",
+      "platformVersion": "14.4.2",
+      "udid": "a459266f870f38bd0c183a49ba5fbcb3ecd90079",
+      "bundleId": "ru.russianpost.Russian-Post",
+      "automationName": "XCUITest",
+      "noReset": "true",
+      "useNewWDA": "false",
+      "language": "en",
+      "newCommandTimeout": "2400"
+    },
+    "iOSSearchProductsTest": {
+      "menuElementForClick": "Товары",
+      "typeSearchLine": "Nutella"
+    },
+    "iOSAuthorizeTest": {
+      "isLoggined": {
+        "menuElementForClick": "Ещё",
+        "userIsLoginnedAttribute": "Мой профиль"
+      },    
+        "authorize": {
+          "menuElementForClick1": "Ещё",
+          "menuElementForClick2": "Регистрация и вход",
+          "login": "9110985699",
+          "pass": "12345678"
+        },
+        "logOut": {
+          "menuElementForClick1": "Ещё",
+          "menuElementForClick2": "Мой профиль",
+          "elementExistInMenu": "Мой профиль"
+        }
+      },
+    "iOSSwitchAppToBrowserAndBackToAppTest": {
+      "menuElementForClick": "Отделения"
+    }
+  }
+}

@@ -1,9 +1,12 @@
-﻿using MobileTestTask.Tests.IOS;
+﻿using MobileTestTask.Configuration;
+using MobileTestTask.Tests.IOS;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +15,11 @@ namespace MobileTestTask.PageObjects.IOSPageObjects
 {
     public class User : CorePageObject
     {
-        public static MainPageObject MainPageObject;
+        private static MainPageObject MainPageObject;
         private static MorePageObject MorePageObject;
         private static LoginPageObject LoginPageObject;
         private static MyProfilePageObject MyProfilePageObject;
-        
-
+        private static Config config;
 
         public User(AppiumDriver<IWebElement> driver) : base(driver)
         {          
@@ -26,12 +28,14 @@ namespace MobileTestTask.PageObjects.IOSPageObjects
             MorePageObject = new MorePageObject(driver);
             LoginPageObject = new LoginPageObject(driver);
             MyProfilePageObject = new MyProfilePageObject(driver);
+            var configFile = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configuration.json"));
+            config = JsonConvert.DeserializeObject<Config>(configFile);
         }
 
         public  bool IsLoggined() {                   
 
-            MainPageObject.ClickOnMenuItem("Ещё");
-            var userIsLoginned = MorePageObject.ElementExistInMenu("Мой профиль");
+            MainPageObject.ClickOnMenuItem(config.IOS.IOSAuthorizeTest.IsLoggined.menuElementForClick);
+            var userIsLoginned = MorePageObject.ElementExistInMenu(config.IOS.IOSAuthorizeTest.IsLoggined.userIsLoginnedAttribute);
             
             return userIsLoginned;                 
         }
@@ -39,23 +43,23 @@ namespace MobileTestTask.PageObjects.IOSPageObjects
 
         public void Authorize() {
 
-            MainPageObject.ClickOnMenuItem("Ещё");
-            MorePageObject.ClickOnMenuItem("Регистрация и вход");
+            MainPageObject.ClickOnMenuItem(config.IOS.IOSAuthorizeTest.Authorize.MenuElementForClick1);
+            MorePageObject.ClickOnMenuItem(config.IOS.IOSAuthorizeTest.Authorize.MenuElementForClick2);
 
-            LoginPageObject.WaitForElementAndSendKeys(LoginPageObject.Login, "9110985699", 5);
-            LoginPageObject.WaitForElementAndSendKeys(LoginPageObject.Pass, "12345678", 5);
+            LoginPageObject.WaitForElementAndSendKeys(LoginPageObject.Login, config.IOS.IOSAuthorizeTest.Authorize.Login, 5);
+            LoginPageObject.WaitForElementAndSendKeys(LoginPageObject.Pass, config.IOS.IOSAuthorizeTest.Authorize.Pass, 5);
             LoginPageObject.WaitForElementAndClick(LoginPageObject.Enter, 5);
         }
 
 
         public void LogOut() {
 
-            MainPageObject.ClickOnMenuItem("Ещё");
-            MorePageObject.ClickOnMenuItem("Мой профиль");
+            MainPageObject.ClickOnMenuItem(config.IOS.IOSAuthorizeTest.LogOut.MenuElementForClick1);
+            MorePageObject.ClickOnMenuItem(config.IOS.IOSAuthorizeTest.LogOut.MenuElementForClick2);
             MyProfilePageObject.Exit.Click();
             MyProfilePageObject.ContextMenu.ClickExitInContextMenu();
 
-            var userIsLoginned = MorePageObject.ElementExistInMenu("Мой профиль");
+            var userIsLoginned = MorePageObject.ElementExistInMenu(config.IOS.IOSAuthorizeTest.LogOut.ElementExistInMenu);
             Assert.That(!userIsLoginned, "После логаута юзер остал залогиненым");
 
         }
