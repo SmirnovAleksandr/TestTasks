@@ -18,7 +18,7 @@ namespace MobileTestTask.Tests.IOS
     public class CoreTestCase
     {
         protected AppiumDriver<IWebElement> Driver;
-        private static string SeleniumHubURL = $"http://172.16.6.197:4723/wd/hub";
+        private static string SeleniumHubURL = $"http://172.16.6.188:4723/wd/hub";
         protected IWait Wait;
 
     
@@ -37,6 +37,7 @@ namespace MobileTestTask.Tests.IOS
             capabilities.AddAdditionalCapability("useNewWDA", "false");
             //capabilities.AddAdditionalCapability("xcodeOrgId", "3V72XTL4S5");
             capabilities.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, 2400);
+            capabilities.AddAdditionalCapability("language", "en");
 
             //capabilities.AddAdditionalCapability("bundleId", "by.mts.money");
 

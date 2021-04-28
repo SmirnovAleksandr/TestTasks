@@ -74,7 +74,8 @@
     <Compile Include="PageObjects\AndroidPageObjects\LoginActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\MainActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\MainTabActivityPage.cs" />
-    <Compile Include="PageObjects\IOSPageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\Browser.cs" />
+    <Compile Include="PageObjects\IOSPageObjects\DepartmentPageObject.cs" />
     <Compile Include="PageObjects\IOSPageObjects\Keyboard.cs" />
     <Compile Include="PageObjects\IOSPageObjects\User.cs" />
     <Compile Include="PageObjects\IOSPageObjects\CorePageObject.cs" />
