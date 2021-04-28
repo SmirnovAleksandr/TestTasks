@@ -19,7 +19,8 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         [FindsBy(How = How.XPath, Using = "//*[@resource-id='com.instagram.android:id/creation_tab']")]
         public IWebElement DoShootBtn;
 
-                /*Restriction */
 
+        [FindsBy(How = How.XPath, Using = "//*[@resource-id='com.instagram.android:id/row_pending_container']")]
+        public IWebElement PendingContainer;
     }
 }

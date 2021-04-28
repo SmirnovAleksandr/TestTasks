@@ -70,10 +70,14 @@
   <ItemGroup>
     <Compile Include="PageObjects\AndroidPageObjects\BasePage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\CameraPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\CropPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\FiltersPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\NewPostPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\NewPublicationPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\LoginActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\MainActivityPage.cs" />
     <Compile Include="PageObjects\AndroidPageObjects\MainTabActivityPage.cs" />
+    <Compile Include="PageObjects\AndroidPageObjects\SelectImagePage.cs" />
     <Compile Include="PageObjects\IOSPageObjects\Browser.cs" />
     <Compile Include="PageObjects\IOSPageObjects\DepartmentPageObject.cs" />
     <Compile Include="PageObjects\IOSPageObjects\Keyboard.cs" />
