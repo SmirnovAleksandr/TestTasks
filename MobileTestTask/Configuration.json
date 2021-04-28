@@ -21,21 +21,85 @@
       "isLoggined": {
         "menuElementForClick": "Ещё",
         "userIsLoginnedAttribute": "Мой профиль"
-      },    
-        "authorize": {
-          "menuElementForClick1": "Ещё",
-          "menuElementForClick2": "Регистрация и вход",
-          "login": "9110985699",
-          "pass": "12345678"
-        },
-        "logOut": {
-          "menuElementForClick1": "Ещё",
-          "menuElementForClick2": "Мой профиль",
-          "elementExistInMenu": "Мой профиль"
-        }
       },
+      "authorize": {
+        "menuElementForClick1": "Ещё",
+        "menuElementForClick2": "Регистрация и вход",
+        "login": "9110985699",
+        "pass": "12345678"
+      },
+      "logOut": {
+        "menuElementForClick1": "Ещё",
+        "menuElementForClick2": "Мой профиль",
+        "elementExistInMenu": "Мой профиль"
+      }
+    },
     "iOSSwitchAppToBrowserAndBackToAppTest": {
       "menuElementForClick": "Отделения"
     }
+  },
+  "Android": {
+    "AndroidCapabilities_avd8": {
+      "hub": "http://SPBPC088:4723/wd/hub",
+      "deviceName": "8.0_Pixel 2 XL API 26",
+      "platformName": "Android",
+      "platformVersion": "8.0",
+      "udid": "emulator-5558",
+      "NewCommandTimeout": "2400",
+      "automationName": "UiAutomator2",
+      "adbExecTimeout": "60000",
+      "appPackage": "com.instagram.android",
+      "appActivity": ".activity.MainTabActivity",
+      "app": "d:\\apks\\Instagram_v184.0.0.30.117_x86.apk",
+      "autoDismissAlerts": true
+    },
+    "AndroidCapabilities_avd7": {
+      "hub": "http://SPBPC088:4723/wd/hub",
+      "deviceName": "7.0_Pixel 3 XL API 24",
+      "platformName": "Android",
+      "platformVersion": "7.0",
+      "udid": "emulator-5556",
+      "NewCommandTimeout": "2400",
+      "automationName": "UiAutomator2",
+      "adbExecTimeout": "60000",
+      "appPackage": "com.instagram.android",
+      "appActivity": ".activity.MainTabActivity",
+      "app": "d:\\apks\\Instagram_v184.0.0.30.117_x86.apk",
+      "autoDismissAlerts": true
+    },
+    "AndroidCapabilities_avd6": {
+      "hub": "http://SPBPC088:4723/wd/hub",
+      "deviceName": "6.0_Nexus 6P API 23",
+      "platformName": "Android",
+      "platformVersion": "6.0",
+      "udid": "emulator-5554",
+      "NewCommandTimeout": "2400",
+      "automationName": "UiAutomator2",
+      "adbExecTimeout": "60000",
+      "appPackage": "com.instagram.android",
+      "appActivity": ".activity.MainTabActivity",
+      "app": "d:\\apks\\Instagram_v184.0.0.30.117_x86.apk",
+      "autoDismissAlerts": true
+    },
+    "AndroidCapabilities": {
+      "hub": "http://SPBPC088:4723/wd/hub",
+      "deviceName": "Samsung j3",
+      "platformName": "Android",
+      "platformVersion": "8.0",
+      "udid": "4200bdd2cc28a4e9",
+      "NewCommandTimeout": "2400",
+      "automationName": "UiAutomator2",
+      "adbExecTimeout": "60000",
+      "appPackage": "com.instagram.android",
+      "appActivity": ".activity.MainTabActivity",
+      "app": "d:\\apks\\Instagram_v184.0.0.30.117_armeabi-v7a.apk",
+      "autoDismissAlerts": true
+    },
+    "InstagramCredential": {
+      "login": "+79067348273",
+      "password": "3728qw"
+    },
+    "PhotoStorageOnAndroid": "/sdcard/Download/InstaTest/",
+    "PhotoSourceOnHost": "d:\\tmp\\IMG_0651.JPG"
   }
 }

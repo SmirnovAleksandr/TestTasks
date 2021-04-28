@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace MobileTestTask.Configuration
 {
+    
     [JsonObject(ItemRequired = Required.Always)]
     public class Config
     {
         [JsonProperty(Required = Required.Always)]
+        public IOS IOS;
 
-        public IOS IOS;          
+        [JsonProperty(Required = Required.Always)]
+        public Android Android;
     }
 
+    #region iOS
     [JsonObject(ItemRequired = Required.Always)]
     public class IOS
     {
@@ -87,5 +91,44 @@ namespace MobileTestTask.Configuration
         public string MenuElementForClick;
        
     }
+    #endregion
+
+    #region Android
+    [JsonObject(ItemRequired = Required.Always)]
+    public class Android
+    {
+        public AndroidCapabilities AndroidCapabilities;
+        public InstagramCredential InstagramCredential;
+        public string PhotoStorageOnAndroid;
+        public string PhotoSourceOnHost;
+    }
+
+    [JsonObject(ItemRequired = Required.Always)]
+    public class AndroidCapabilities
+    {
+        public string Hub;
+        public string DeviceName;
+        public string PlatformName;
+        public string PlatformVersion;
+        public string Udid;
+        public string NewCommandTimeout;        
+        public string AutomationName;
+
+        public string adbExecTimeout;
+
+        public string appPackage;
+        public string appActivity;
+        public string app;
+        public bool autoDismissAlerts;
+    }
+
+    [JsonObject(ItemRequired = Required.Always)]
+    public class InstagramCredential
+    {
+        public string login;
+        public string password;
+    }
+
+    #endregion
 
 }

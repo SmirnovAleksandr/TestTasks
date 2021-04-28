@@ -34,7 +34,7 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         [FindsBy(How = How.XPath,
             Using = ".//*[@resource-id='com.instagram.android:id/action_sheet_row_text_view' and contains(@text, 'InstaTest' )]")]
         public IWebElement InstaTest;
-
+        
 
     }
 }

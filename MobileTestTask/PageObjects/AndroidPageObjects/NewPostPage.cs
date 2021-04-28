@@ -14,5 +14,13 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         [FindsBy(How = How.XPath, Using = ".//*[@resource-id='com.instagram.android:id/next_button_imageview']	")]
         public IWebElement NextBtn;
 
+
+        /// <summary>
+        /// подпись к публикации
+        /// </summary>
+        [FindsBy(How = How.XPath, Using = ".//*[@resource-id='com.instagram.android:id/caption_text_view']")]
+        public IWebElement Caption;
+
+
     }
 }

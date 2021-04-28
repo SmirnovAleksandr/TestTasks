@@ -10,22 +10,18 @@ namespace MobileTestTask.Tests.Android
         [SetUp]
         public void Setup()
         {
-            // Login to Instagramm
             MainTabActivityPage mtap = new MainTabActivityPage(_driver);
-
             WaitAndClick(mtap.GoInBtn,mtap);
                 
             LoginActivityPage lap = new LoginActivityPage(_driver);
             Wait.WaitElement(lap.Login);
-            lap.Login.Click();
-            //lap.Login.Clear();
+            lap.Login.Click(); 
                 RandomTimeout();
-            lap.Login.SendKeys("+79067348273");
+            lap.Login.SendKeys(config.Android.InstagramCredential.login);
 
-            lap.Password.Click();
-            //lap.Password.Clear();
+            lap.Password.Click();            
                 RandomTimeout();
-            lap.Password.SendKeys("3728qw");
+            lap.Password.SendKeys(config.Android.InstagramCredential.password);
 
             WaitAndClick(lap.GoInBtn);                
         }
@@ -40,8 +36,8 @@ namespace MobileTestTask.Tests.Android
             WaitAndClick(newPublicationPage.CamneraBtn, newPublicationPage);
 
 
-            // после разрешения доступов истаграмм выкидывает на предыдущйи экран. 
-            // поэтому такой костыль. 
+            // после разрешения доступов истаграмм выкидывает на предыдущий экран. 
+            // поэтому здесь такой костыль. 
             if( PermitRequestWait.WaitElement(newPublicationPage.PermitionAllowBtn, false))
             {
                 while (PermitRequestWait.WaitElement(newPublicationPage.PermitionAllowBtn, false))
@@ -55,19 +51,17 @@ namespace MobileTestTask.Tests.Android
             CameraPage cameraPage = new CameraPage(_driver);
             WaitAndClick(cameraPage.DoShootBtn, cameraPage);
 
-            // дальше-дaльше... 
+            // применяем фильтр - самый первый - Clarendon
             FiltersPage filtersPage = new FiltersPage(_driver);
             WaitAndClick(filtersPage.ClarendonFilter);
             WaitAndClick(filtersPage.NextBtn);
 
-
+            //
             NewPostPage newPostPage = new NewPostPage(_driver);
+            Wait.WaitElement(newPostPage.Caption);
+            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilities.Udid + " " + TestContext.CurrentContext.Test.Name);
             WaitAndClick(newPostPage.NextBtn);
-/*
-            mainActivityPage = new MainActivityPage(_driver);
-            var tt = mainActivityPage.PendingContainer.Text;
-            System.Diagnostics.Debug.WriteLine(" -------------  MAPage.PendingContainer.Text  is" + tt);
-*/
+
             System.Diagnostics.Debug.WriteLine("-----------------------------------");
             System.Diagnostics.Debug.WriteLine("------------------------ Приехали!!");
             System.Diagnostics.Debug.WriteLine("-----------------------------------");
@@ -84,32 +78,6 @@ namespace MobileTestTask.Tests.Android
             WaitAndClick(newPublicationPage.SourceSelector, newPublicationPage);
             WaitAndClick(newPublicationPage.InstaTest, newPublicationPage);
 
-
-            /*А тут нам надо выбрать фото - мы берём первое*/
-
-
-            /*            WaitAndClick(newPublicationPage.CamneraBtn, newPublicationPage);
-
-
-                        // после разрешения доступов истаграмм выкидывает на предыдущйи экран. 
-                        // поэтому такой костыль. 
-                        if (PermitRequestWait.WaitElement(newPublicationPage.PermitionAllowBtn, false))
-                        {
-                            while (PermitRequestWait.WaitElement(newPublicationPage.PermitionAllowBtn, false))
-                            {
-                                newPublicationPage.PermitionAllowBtn.Click();
-                            }
-                            WaitAndClick(newPublicationPage.CamneraBtn, newPublicationPage);
-                        }
-
-
-
-
-                        //делаем снимок
-                        CameraPage cameraPage = new CameraPage(_driver);
-                        WaitAndClick(cameraPage.DoShootBtn, cameraPage);
-            */
-
             SelectImagePage selectImagePage = new SelectImagePage(_driver);
             WaitAndClick(selectImagePage.SelectedImageThumb);
 
@@ -123,19 +91,14 @@ namespace MobileTestTask.Tests.Android
             WaitAndClick(filtersPage.ClarendonFilter);
             WaitAndClick(filtersPage.NextBtn);
 
-
             NewPostPage newPostPage = new NewPostPage(_driver);
+            Wait.WaitElement(newPostPage.Caption);
+            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilities.Udid + " " + TestContext.CurrentContext.Test.Name);
             WaitAndClick(newPostPage.NextBtn);
-/*
-            mainActivityPage = new MainActivityPage(_driver);
-            var tt = mainActivityPage.PendingContainer.Text;
-            System.Diagnostics.Debug.WriteLine(" -------------  MAPage.PendingContainer.Text  is" + tt);
-*/
+
             System.Diagnostics.Debug.WriteLine("----------------------------------");
             System.Diagnostics.Debug.WriteLine("------------------------ Поехали!!");
             System.Diagnostics.Debug.WriteLine("----------------------------------");
         }
-
-
     }
 }
