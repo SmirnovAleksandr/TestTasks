@@ -30,12 +30,6 @@ namespace MobileTestTask.Tests.Android
             WaitAndClick(lap.GoInBtn);                
         }
 
-/*
-        [TearDown]
-        public void TearDown()
-        {
-        }
-*/
         [TestCase(TestName = "01.To make a shoot by Camera")]
         public void Test1()
         {

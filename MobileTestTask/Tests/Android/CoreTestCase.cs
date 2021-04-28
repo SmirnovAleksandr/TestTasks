@@ -6,8 +6,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Enums;
 using System;
-
-
+using System.IO;
 
 namespace MobileTestTask.Tests.Android
 {
@@ -30,16 +29,26 @@ namespace MobileTestTask.Tests.Android
         TimeSpan timeStep;
 
         // для тестовых целей есть возможность менять устройства и соответсвенно appiumOptions  ( см SetAppiumOptions )
-        string usedDevices = "Samsung j3";// "Emulator-5554"; // 
+        string usedDevices = "Emulator-5554"; // "Samsung j3";// "Emulator-5556"; // 
 
         protected string udid;
-        protected string adbPath = "C:\\Users\\amosovn\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe";
+        //protected string adbPath = "C:\\Users\\amosovn\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe";
+
+
+        protected string imgDirAndroid = "/sdcard/Download/InstaTest/";
+
+
 
         void copyFileToAndroid()
         {
 
-            // Copy file from desktop to android             
-            System.Diagnostics.Process.Start(adbPath, "-s " + udid + " push d:\\tmp\\IMG_0651.JPG  /sdcard/Download/InstaTest/IMG_0651.JPG");
+            // Copy file from desktop to android     
+            var tt = AppDomain.CurrentDomain.BaseDirectory;
+            System.Diagnostics.Process.Start(tt+"\\ScriptFolder\\adbScript.bat", 
+                 udid + " d:\\tmp\\IMG_0651.JPG" + " " + imgDirAndroid);
+
+
+//            System.Diagnostics.Process.Start(adbPath, "-s " + udid + " push d:\\tmp\\IMG_0651.JPG  imgDirAndroidIMG_0651.JPG");
 
             System.Threading.Thread.Sleep(5000);
         }
@@ -75,6 +84,25 @@ namespace MobileTestTask.Tests.Android
                     appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "6.0");
                     appiumOptions.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, 2400);
                     udid = "emulator-5554";
+                    appiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, udid);                    
+                    appiumOptions.AddAdditionalCapability("automationName", "UiAutomator2");
+                    appiumOptions.AddAdditionalCapability("adbExecTimeout", "60000");
+                    appiumOptions.AddAdditionalCapability("appPackage", "com.instagram.android");
+                    appiumOptions.AddAdditionalCapability("appActivity", ".activity.MainTabActivity");
+                    appiumOptions.AddAdditionalCapability("testName", TestContext.CurrentContext.Test.Name);
+                    appiumOptions.AddAdditionalCapability("app", "C:\\Users\\amosovn\\Documents\\Q-Art\\AutotestTender202104\\Instagram_v184.0.0.30.117_x86.apk");
+                    
+                    timeout = new TimeSpan(0, 0, 15);
+                    timeStep = new TimeSpan(0, 0, 0, 0, 1000);
+                    AppiumServerURL = "http://SPBPC088.artq.com:4723/wd/hub";
+
+                    break;
+                case "Emulator-5556":
+                    appiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, "Emulator-5554");
+                    appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+                    appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "6.0");
+                    appiumOptions.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, 2400);
+                    udid = "emulator-5556";
                     appiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, udid);                    
                     appiumOptions.AddAdditionalCapability("automationName", "UiAutomator2");
                     appiumOptions.AddAdditionalCapability("adbExecTimeout", "60000");
@@ -136,10 +164,17 @@ namespace MobileTestTask.Tests.Android
             // TODO
             System.Threading.Thread.Sleep(5000);
 
-            System.Diagnostics.Process.Start(adbPath, "-s " + udid + " shell rm -rf   /sdcard/Download/InstaTest/");
+
+            var tt = AppDomain.CurrentDomain.BaseDirectory;
+            System.Diagnostics.Process.Start(tt + "\\ScriptFolder\\TearDown.bat",
+                 udid + " " + imgDirAndroid);
+
+
+/*            System.Diagnostics.Process.Start(adbPath, "-s " + udid + " shell rm -rf " + imgDirAndroid);
             // "adb -s 4200bdd2cc28a4e9 shell rm -rf  /sdcard/Download/IMG_0651.JPG"
 
             System.Diagnostics.Process.Start(adbPath , "-s " + udid + " uninstall com.instagram.android");
+*/
         }
 
         protected bool WaitAndClick(IWebElement Elem2Click, BasePage page = null )
