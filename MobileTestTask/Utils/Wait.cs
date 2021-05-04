@@ -150,9 +150,13 @@ namespace MobileTestTask.Utils
                     System.Diagnostics.Debug.WriteLine("Waiting for " + el.Text);
                     if (el.Displayed) return true;
                 }
-                catch (NoSuchElementException)
+                catch (NoSuchElementException nsee)
                 {
                     System.Diagnostics.Debug.WriteLine("Element still Not found");
+                }
+                catch (WebDriverException wde)
+                {
+                    System.Diagnostics.Debug.WriteLine("WDE: " + wde.Message);
                 }
                 catch (System.Reflection.TargetInvocationException tie)
                 {

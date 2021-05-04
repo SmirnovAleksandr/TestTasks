@@ -1,15 +1,16 @@
 ﻿using MobileTestTask.PageObjects.AndroidPageObjects;
 using MobileTestTask.Utils;
 using NUnit.Framework;
-
+using System.Threading;
 
 namespace MobileTestTask.Tests.Android
 {
     public class Tests : CoreTestCase
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
+            System.Diagnostics.Debug.WriteLine("---------------OTSetup Tests ");
             MainTabActivityPage mtap = new MainTabActivityPage(_driver);
             WaitAndClick(mtap.GoInBtn,mtap);
                 
@@ -72,6 +73,7 @@ namespace MobileTestTask.Tests.Android
         public void Test2()
         {
             MainActivityPage mainActivityPage = new MainActivityPage(_driver);
+            //while (mainActivityPage.DoShootBtn == null) { Thread.Sleep(500); }
             WaitAndClick(mainActivityPage.DoShootBtn);
 
             NewPublicationPage newPublicationPage = new NewPublicationPage(_driver);
