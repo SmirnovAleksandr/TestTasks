@@ -34,7 +34,7 @@ namespace MobileTestTask.Tests.Android
         {
             // Copy file from desktop to android                 
             System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\ScriptFolder\\adbScript.bat", 
-                 config.Android.AndroidCapabilities.Udid + " " + 
+                 config.Android.AndroidCapabilitiesList[0].Udid + " " + 
                  config.Android.PhotoSourceOnHost + " " + 
                  config.Android.PhotoStorageOnAndroid);
             // 
@@ -43,28 +43,27 @@ namespace MobileTestTask.Tests.Android
 
         public void SetAppiumOptions()
         {
-            appiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, config.Android.AndroidCapabilities.DeviceName);
-            appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, config.Android.AndroidCapabilities.PlatformName);
-            appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, config.Android.AndroidCapabilities.PlatformVersion);
-            appiumOptions.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, config.Android.AndroidCapabilities.NewCommandTimeout);            
-            appiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, config.Android.AndroidCapabilities.Udid);
-            appiumOptions.AddAdditionalCapability("automationName", config.Android.AndroidCapabilities.AutomationName);
-            appiumOptions.AddAdditionalCapability("adbExecTimeout", config.Android.AndroidCapabilities.adbExecTimeout);
-            appiumOptions.AddAdditionalCapability("appPackage", config.Android.AndroidCapabilities.appPackage);
-            appiumOptions.AddAdditionalCapability("appActivity", config.Android.AndroidCapabilities.appActivity);
+            appiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, config.Android.AndroidCapabilitiesList[0].DeviceName);
+            appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, config.Android.AndroidCapabilitiesList[0].PlatformName);
+            appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, config.Android.AndroidCapabilitiesList[0].PlatformVersion);
+            appiumOptions.AddAdditionalCapability(MobileCapabilityType.NewCommandTimeout, config.Android.AndroidCapabilitiesList[0].NewCommandTimeout);            
+            appiumOptions.AddAdditionalCapability(MobileCapabilityType.Udid, config.Android.AndroidCapabilitiesList[0].Udid);
+            appiumOptions.AddAdditionalCapability("automationName", config.Android.AndroidCapabilitiesList[0].AutomationName);
+            appiumOptions.AddAdditionalCapability("adbExecTimeout", config.Android.AndroidCapabilitiesList[0].adbExecTimeout);
+            appiumOptions.AddAdditionalCapability("appPackage", config.Android.AndroidCapabilitiesList[0].appPackage);
+            appiumOptions.AddAdditionalCapability("appActivity", config.Android.AndroidCapabilitiesList[0].appActivity);
             appiumOptions.AddAdditionalCapability("testName", TestContext.CurrentContext.Test.Name);
-            appiumOptions.AddAdditionalCapability("app", config.Android.AndroidCapabilities.app);
+            appiumOptions.AddAdditionalCapability("app", config.Android.AndroidCapabilitiesList[0].app);
             appiumOptions.AddAdditionalCapability("autoDismissAlerts", true);
 
             timeout = new TimeSpan(0, 0, 15);
-            timeStep = new TimeSpan(0, 0, 0, 0, 1000);
-
-            // AppiumServerURL = config.Android.AndroidCapabilities.Hub;            
+            timeStep = new TimeSpan(0, 0, 0, 0, 1000);     
         }
 
         [OneTimeSetUp]
         public void SetUp()
         {
+            System.Diagnostics.Debug.WriteLine("---------------OTSetup CoreTests ");
             var currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var configFile = File.ReadAllText(Path.Combine(currentDirectory, "Configuration.json"));
             config = JsonConvert.DeserializeObject<Config>(configFile);
@@ -75,7 +74,7 @@ namespace MobileTestTask.Tests.Android
             CopyFileToAndroid();
 
             _driver = new AndroidDriver<AppiumWebElement>(
-                        new Uri(config.Android.AndroidCapabilities.Hub),
+                        new Uri(config.Android.AndroidCapabilitiesList[0].Hub),
                         appiumOptions,
                         new TimeSpan(0, 3, 0)
                         )
@@ -96,9 +95,10 @@ namespace MobileTestTask.Tests.Android
         }
 
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
+            System.Diagnostics.Debug.WriteLine("---------------OTTearDown CoreTests ");
             _driver?.CloseApp();
             _driver?.Quit();
 
@@ -107,7 +107,7 @@ namespace MobileTestTask.Tests.Android
             System.Threading.Thread.Sleep(5000);
             
             System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\ScriptFolder\\TearDown.bat",
-                 config.Android.AndroidCapabilities.Udid + " " + 
+                 config.Android.AndroidCapabilitiesList[0].Udid + " " + 
                  config.Android.PhotoStorageOnAndroid );
         }
 

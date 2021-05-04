@@ -97,7 +97,7 @@ namespace MobileTestTask.Configuration
     [JsonObject(ItemRequired = Required.Always)]
     public class Android
     {
-        public AndroidCapabilities AndroidCapabilities;
+        public AndroidCapabilities[] AndroidCapabilitiesList;
         public InstagramCredential InstagramCredential;
         public string PhotoStorageOnAndroid;
         public string PhotoSourceOnHost;
