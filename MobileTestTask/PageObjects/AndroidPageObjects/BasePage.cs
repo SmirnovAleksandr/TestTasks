@@ -10,7 +10,7 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
 {
     public class BasePage
     {
-        private AppiumDriver<AppiumWebElement> _driver;
+        private readonly AppiumDriver<AppiumWebElement> _driver;
         public BasePage(AndroidDriver<AppiumWebElement> androidDriver)
         {
             _driver = androidDriver;
