@@ -20,18 +20,6 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         }
 
 
-        //TODO Should Be Refactored 
-        /// <summary>
-        /// Current is a mock 
-        /// </summary>
-        /// <returns></returns>
-
-        public bool Dispalyed()
-        {
-            System.Threading.Thread.Sleep(10000);
-            return true;
-        }
-
         /// <summary>
         /// Button Allow for any permition requests popup
         /// </summary>

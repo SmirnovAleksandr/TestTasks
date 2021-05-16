@@ -39,7 +39,36 @@
     }
   },
   "Android": {
-    "AndroidCapabilities": [
+    "CapabilitiesItem": 1,
+    "AndroidCapabilitiesList": [
+      {
+        "hub": "http://SPBPC088:4723/wd/hub",
+        "deviceName": "9.0_Pixel 3 XL API 28",
+        "platformName": "Android",
+        "platformVersion": "9.0",
+        "udid": "emulator-5554",
+        "NewCommandTimeout": "2400",
+        "automationName": "UiAutomator2",
+        "adbExecTimeout": "60000",
+        "appPackage": "com.instagram.android",
+        "appActivity": ".activity.MainTabActivity",
+        "app": "d:\\apks\\Instagram_v186.0.0.36.128_x86.apk",
+        "autoDismissAlerts": true
+      },
+      {
+        "hub": "http://SPBPC088:4723/wd/hub",
+        "deviceName": "8.1_Pixel 2 XL API 26",
+        "platformName": "Android",
+        "platformVersion": "8.1",
+        "udid": "emulator-5556",
+        "NewCommandTimeout": "2400",
+        "automationName": "UiAutomator2",
+        "adbExecTimeout": "60000",
+        "appPackage": "com.instagram.android",
+        "appActivity": ".activity.MainTabActivity",
+        "app": "d:\\apks\\Instagram_v186.0.0.36.128_x86.apk",
+        "autoDismissAlerts": true
+      },
       {
         "hub": "http://SPBPC088:4723/wd/hub",
         "deviceName": "8.0_Pixel 2 XL API 26",
@@ -51,9 +80,9 @@
         "adbExecTimeout": "60000",
         "appPackage": "com.instagram.android",
         "appActivity": ".activity.MainTabActivity",
-        "app": "d:\\apks\\Instagram_v184.0.0.30.117_x86.apk",
+        "app": "d:\\apks\\Instagram_v186.0.0.36.128_x86.apk",
         "autoDismissAlerts": true
-      },      
+      },
       {
         "hub": "http://SPBPC088:4723/wd/hub",
         "deviceName": "7.0_Pixel 3 XL API 24",
@@ -67,7 +96,7 @@
         "appActivity": ".activity.MainTabActivity",
         "app": "d:\\apks\\Instagram_v184.0.0.30.117_x86.apk",
         "autoDismissAlerts": true
-      },      
+      },
       {
         "hub": "http://SPBPC088:4723/wd/hub",
         "deviceName": "6.0_Nexus 6P API 23",
@@ -86,7 +115,7 @@
         "hub": "http://SPBPC088:4723/wd/hub",
         "deviceName": "Samsung j3",
         "platformName": "Android",
-        "platformVersion": "8.0",
+        "platformVersion": "9.0",
         "udid": "4200bdd2cc28a4e9",
         "NewCommandTimeout": "2400",
         "automationName": "UiAutomator2",
@@ -95,13 +124,42 @@
         "appActivity": ".activity.MainTabActivity",
         "app": "d:\\apks\\Instagram_v184.0.0.30.117_armeabi-v7a.apk",
         "autoDismissAlerts": true
+      },
+      {
+        "hub": "http://SPBPC088:4723/wd/hub",
+        "deviceName": "Samsung Galaxy J7 Neo",
+        "platformName": "Android",
+        "platformVersion": "7.0",
+        "udid": "5200e765ecf3b48f",
+        "NewCommandTimeout": "2400",
+        "automationName": "UiAutomator2",
+        "adbExecTimeout": "60000",
+        "appPackage": "com.instagram.android",
+        "appActivity": ".activity.MainTabActivity",
+        "app": "d:\\apks\\Instagram_v184.0.0.30.117_armeabi-v7a.apk",
+        "autoDismissAlerts": true
+      },
+      {
+        "hub": "http://172.16.6.238:4723/wd/hub",
+        "deviceName": "8.1_Pixel 2 XL API 26",
+        "platformName": "Android",
+        "platformVersion": "8.1",
+        "udid": "emulator-5554",
+        "NewCommandTimeout": "2400",
+        "automationName": "UiAutomator2",
+        "adbExecTimeout": "60000",
+        "appPackage": "com.instagram.android",
+        "appActivity": ".activity.MainTabActivity",
+        "app": "c:\\apks\\Instagram_v186.0.0.36.128_x86.apk",
+        "autoDismissAlerts": true
       }
+
     ],
     "InstagramCredential": {
       "login": "+79067348273",
       "password": "3728qw"
     },
-    "PhotoStorageOnAndroid": "/sdcard/Download/InstaTest/",
-    "PhotoSourceOnHost": "d:\\tmp\\IMG_0651.JPG"
+    "PhotoStorageOnAndroid": "/mnt/sdcard/Download/",
+    "PhotoSourceOnHost": "d:\\tmp\\photo_2019-07-24_14-09-15.jpg"
   }
 }

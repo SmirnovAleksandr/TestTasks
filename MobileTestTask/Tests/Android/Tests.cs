@@ -27,8 +27,8 @@ namespace MobileTestTask.Tests.Android
             WaitAndClick(lap.GoInBtn);                
         }
 
-        [TestCase(TestName = "01.To make a shoot by Camera")]
-        public void Test1()
+        [TestCase(1, TestName = "01.To make a shoot by Camera")]
+        public void Test1( int n)
         {
             MainActivityPage mainActivityPage = new MainActivityPage(_driver);
             WaitAndClick(mainActivityPage.DoShootBtn);
@@ -48,7 +48,7 @@ namespace MobileTestTask.Tests.Android
                 WaitAndClick(newPublicationPage.CamneraBtn, newPublicationPage);
             }
 
-            //делаем снимок
+            // делаем снимок
             CameraPage cameraPage = new CameraPage(_driver);
             WaitAndClick(cameraPage.DoShootBtn, cameraPage);
 
@@ -59,9 +59,13 @@ namespace MobileTestTask.Tests.Android
 
             //
             NewPostPage newPostPage = new NewPostPage(_driver);
-            Wait.WaitElement(newPostPage.Caption);
-            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilities.Udid + " " + TestContext.CurrentContext.Test.Name);
+            Wait.WaitElement(newPostPage.Caption);            
+            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
+                                         config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " +
+                                         TestContext.CurrentContext.Test.Name);
             WaitAndClick(newPostPage.NextBtn);
+
+            Assert.That(true);
 
             System.Diagnostics.Debug.WriteLine("-----------------------------------");
             System.Diagnostics.Debug.WriteLine("------------------------ Приехали!!");
@@ -69,11 +73,10 @@ namespace MobileTestTask.Tests.Android
         }
 
 
-        [TestCase(TestName = "02. Select Image from Galery")]
-        public void Test2()
+        [TestCase(2, TestName = "02. Select Image from Galery")]
+        public void Test2(int n)
         {
-            MainActivityPage mainActivityPage = new MainActivityPage(_driver);
-            //while (mainActivityPage.DoShootBtn == null) { Thread.Sleep(500); }
+            MainActivityPage mainActivityPage = new MainActivityPage(_driver);            
             WaitAndClick(mainActivityPage.DoShootBtn);
 
             NewPublicationPage newPublicationPage = new NewPublicationPage(_driver);
@@ -95,7 +98,9 @@ namespace MobileTestTask.Tests.Android
 
             NewPostPage newPostPage = new NewPostPage(_driver);
             Wait.WaitElement(newPostPage.Caption);
-            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilities.Udid + " " + TestContext.CurrentContext.Test.Name);
+            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
+                                         config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " + 
+                                         TestContext.CurrentContext.Test.Name);
             WaitAndClick(newPostPage.NextBtn);
 
             System.Diagnostics.Debug.WriteLine("----------------------------------");
