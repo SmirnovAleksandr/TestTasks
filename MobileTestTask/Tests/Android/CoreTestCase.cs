@@ -15,7 +15,7 @@ using System.IO;
 namespace MobileTestTask.Tests.Android
 {
     [TestFixture]
-   // [Parallelizable(scope: ParallelScope.All)]
+    //[Parallelizable(scope: ParallelScope.All)]
     public class CoreTestCase
     {
         //Creating instance for Appium driver
@@ -96,6 +96,9 @@ namespace MobileTestTask.Tests.Android
         {
             _driver?.CloseApp();
 
+            // Here we gonna uninstall Instagramm App 
+            _driver.RemoveApp("com.instagram.android");
+
             //   Remove  added in Setup image file 
             var command2Execute = "rm -rf " + config.Android.PhotoStorageOnAndroid + NewPublicationPage.photoStoreName;
 
@@ -104,16 +107,7 @@ namespace MobileTestTask.Tests.Android
             param.Add("command", command2Execute);
             string ex_result = (string)_driver.ExecuteScript(command, param);
 
-            // Here we gonna uninstall Instagramm App 
-            _driver.RemoveApp("com.instagram.android");
-
-
-            // Try to Clean MediaStorage entrance of InstaTest folder 
-            command = "mobile:shell";
-            command2Execute = "find /mnt/sdcard/Download/ | while read f; do" + 
-                               " am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d \"file://${f}\";" + 
-                               " done";
-
+            // Try to Clean MediaStore
             var jpfToForget = config.Android.PhotoStorageOnAndroid + NewPublicationPage.photoStoreName + "/test.jpg";
             command2Execute = " am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d \"file://" + jpfToForget + "\"";
 
@@ -181,8 +175,8 @@ namespace MobileTestTask.Tests.Android
         {
             get
             {
+                yield return 0;
                 yield return 1;
-                yield return 4;
             }
         }
     }

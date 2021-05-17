@@ -16,11 +16,18 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         {
         }
 
-        [FindsBy(How = How.XPath, Using = "//*[@resource-id='com.instagram.android:id/creation_tab']")]
+        [FindsBy(How = How.XPath, Using = ".//*[@resource-id='com.instagram.android:id/creation_tab']")]
         public IWebElement DoShootBtn;
 
 
-        [FindsBy(How = How.XPath, Using = "//*[@resource-id='com.instagram.android:id/row_pending_container']")]
+        [FindsBy(How = How.XPath, Using = ".//*[@resource-id='com.instagram.android:id/row_pending_container']")]
         public IWebElement PendingContainer;
+
+
+        [FindsBy(How = How.XPath, Using = ".//*[ @resource-id='com.instagram.android:id/row_feed_comment_textview_layout']")]
+        public IWebElement PostTitle;
+
+
+
     }
 }

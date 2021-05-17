@@ -1,6 +1,7 @@
 ﻿using MobileTestTask.PageObjects.AndroidPageObjects;
 using MobileTestTask.Utils;
 using NUnit.Framework;
+using System;
 using System.Threading;
 
 namespace MobileTestTask.Tests.Android
@@ -10,6 +11,7 @@ namespace MobileTestTask.Tests.Android
         [OneTimeSetUp]
         public void Setup()
         {
+
             System.Diagnostics.Debug.WriteLine("---------------OTSetup Tests ");
             MainTabActivityPage mtap = new MainTabActivityPage(_driver);
             WaitAndClick(mtap.GoInBtn,mtap);
@@ -30,6 +32,11 @@ namespace MobileTestTask.Tests.Android
         [TestCase(1, TestName = "01.To make a shoot by Camera")]
         public void Test1( int n)
         {
+            var PostTitle = config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
+                            config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " +
+                            TestContext.CurrentContext.Test.Name + 
+                            DateTime.Now.ToString() ;
+
             MainActivityPage mainActivityPage = new MainActivityPage(_driver);
             WaitAndClick(mainActivityPage.DoShootBtn);
 
@@ -60,22 +67,25 @@ namespace MobileTestTask.Tests.Android
             //
             NewPostPage newPostPage = new NewPostPage(_driver);
             Wait.WaitElement(newPostPage.Caption);            
-            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
-                                         config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " +
-                                         TestContext.CurrentContext.Test.Name);
+            newPostPage.Caption.SendKeys(PostTitle);
             WaitAndClick(newPostPage.NextBtn);
 
-            Assert.That(true);
+            mainActivityPage = new MainActivityPage(_driver);
+            Wait.WaitElement(mainActivityPage.PostTitle);
+            var CreatedPostTitle = mainActivityPage.PostTitle.Text;
+            Assert.That(CreatedPostTitle.Contains(PostTitle));
 
-            System.Diagnostics.Debug.WriteLine("-----------------------------------");
-            System.Diagnostics.Debug.WriteLine("------------------------ Приехали!!");
-            System.Diagnostics.Debug.WriteLine("-----------------------------------");
         }
 
 
         [TestCase(2, TestName = "02. Select Image from Galery")]
         public void Test2(int n)
         {
+            var PostTitle = config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
+                config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " +
+                TestContext.CurrentContext.Test.Name +
+                DateTime.Now.ToString();
+
             MainActivityPage mainActivityPage = new MainActivityPage(_driver);            
             WaitAndClick(mainActivityPage.DoShootBtn);
 
@@ -98,14 +108,15 @@ namespace MobileTestTask.Tests.Android
 
             NewPostPage newPostPage = new NewPostPage(_driver);
             Wait.WaitElement(newPostPage.Caption);
-            newPostPage.Caption.SendKeys(config.Android.AndroidCapabilitiesList[CapabilitiesItem].DeviceName + " " +
-                                         config.Android.AndroidCapabilitiesList[CapabilitiesItem].Udid + " " + 
-                                         TestContext.CurrentContext.Test.Name);
+            newPostPage.Caption.SendKeys(PostTitle);
             WaitAndClick(newPostPage.NextBtn);
 
-            System.Diagnostics.Debug.WriteLine("----------------------------------");
-            System.Diagnostics.Debug.WriteLine("------------------------ Поехали!!");
-            System.Diagnostics.Debug.WriteLine("----------------------------------");
+
+            mainActivityPage = new MainActivityPage(_driver);
+            Wait.WaitElement(mainActivityPage.PostTitle);
+            var CreatedPostTitle = mainActivityPage.PostTitle.Text;
+            Assert.That(CreatedPostTitle.Contains(PostTitle));
+
         }
     }
 }

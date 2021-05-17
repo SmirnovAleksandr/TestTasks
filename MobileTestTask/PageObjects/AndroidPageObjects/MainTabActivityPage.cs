@@ -22,9 +22,7 @@ namespace MobileTestTask.PageObjects.AndroidPageObjects
         public IWebElement GoInBtn;
 
 
-/*  // Похоже перепутал (( 
 
-*/
 
     }
 }
